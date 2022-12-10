@@ -1,5 +1,6 @@
 import React from "react";
 import chair from '../../assets/images/chair.png';
+import Button from "../Shared/Button";
 const Banner = () => {
   return (
     <div className= {`hero min-h-screen bg-base-200`}>
@@ -15,7 +16,8 @@ const Banner = () => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button className="btn bg-gradient-to-r from-primary to-secondary text-white">Get Started</button>
+          
+          <Button>Get started</Button>
         </div>
       </div>
     </div>
