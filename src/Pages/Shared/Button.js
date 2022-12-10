@@ -1,9 +1,8 @@
 import React from 'react';
 
-const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
-
+const Button = ({children}) => {
     return (
-        <button className="btn bg-gradient-to-r from-primary to-secondary text-white" onClick={onClick} type={type} buttonStyle={buttonStyle}>
+        <button className="btn bg-gradient-to-r from-primary to-secondary text-white">
             {children}
         </button>
     );
