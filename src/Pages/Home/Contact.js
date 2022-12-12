@@ -1,5 +1,6 @@
 import React from "react";
 import contactBgImg from "../../assets/images/appointment.png";
+import Button from "../Shared/Button";
 const Contact = () => {
   return (
     <div
@@ -31,7 +32,10 @@ const Contact = () => {
             />
             {/* <!-- lg --> */}
             <textarea className="textarea textarea-bordered textarea-md w-full max-w-xs" placeholder="Your review"></textarea>
+           <br/>
+            <Button>Submit</Button>
           </div>
+          
         </div>
       </div>
     </div>
