@@ -5,7 +5,7 @@ const Treatment = () => {
   return (
     <div class="hero-content flex-col lg:flex-row lg:px-16 my-32">
       <figure>
-        <img className="sm:max-w-sm lg:max-w-lg" src={TreatmentImg} alt="Album" />
+        <img className="max-w-sm " src={TreatmentImg} alt="Album" />
       </figure>
       <div class="card-body">
         <h2 class="card-title">Exceptional Dental Care, on Your Terms</h2>
