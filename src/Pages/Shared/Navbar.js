@@ -38,6 +38,9 @@ const Navbar = () => {
             <li>
               <Link to={"/register"}>Register</Link>
             </li>
+            <li>
+              <Link to={"/appointment"}>Appointment</Link>
+            </li>
           </ul>
         </div>
         <Link to={"/"} className="btn btn-ghost normal-case text-xl">
@@ -58,6 +61,9 @@ const Navbar = () => {
           <li>
             <Link to={"/register"}>Register</Link>
           </li>
+          <li>
+              <Link to={"/appointment"}>Appointment</Link>
+            </li>
         </ul>
       </div>
     </div>
