@@ -1,8 +1,14 @@
 import React from "react";
 import { format } from "date-fns";
 
-const BookingModal = ({ treatment, date }) => {
-  const { name, slots } = treatment;
+const BookingModal = ({ treatment, setTreatment, date }) => {
+  const { _id, name, slots } = treatment;
+  const handleBooking = event =>{
+    event.preventDefault();
+    const slot = event.target.slot.value;
+    console.log( _id, name, slot)
+    setTreatment(null)
+  }
   return (
     <>
       {/* <!-- Put this part before </body> tag --> */}
@@ -18,9 +24,10 @@ const BookingModal = ({ treatment, date }) => {
           <h3 className="font-bold text-lg text-secondary">
             Booking for: {name}
           </h3>
-          <form className="grid grid-cols-1 gap-4 justify-items-center mt-2">
+          <form onSubmit={handleBooking} className="grid grid-cols-1 gap-4 justify-items-center mt-2">
             <input
               type="text"
+              name="date"
               disabled
               value={format(date, "PP")}
               className="input input-bordered w-full max-w-xs"
@@ -28,23 +35,26 @@ const BookingModal = ({ treatment, date }) => {
 
             <select name="slot" className="select select-bordered w-full max-w-xs">
                 {
-                    slots.map(slot => <option> {slot} </option>)
+                    slots.map(slot => <option value={slot} > {slot} </option>)
                 }
             </select>
 
             <input
               type="text"
-              placeholder="Type here"
+              name="name"
+              placeholder="your name"
               className="input input-bordered w-full max-w-xs"
             />
             <input
-              type="text"
-              placeholder="Type here"
+              type="email"
+              name="email"
+              placeholder="email address"
               className="input input-bordered w-full max-w-xs"
             />
             <input
-              type="text"
-              placeholder="Type here"
+              type="number"
+              name="phone"
+              placeholder="Your Phone number"
               className="input input-bordered w-full max-w-xs"
             />
             <input

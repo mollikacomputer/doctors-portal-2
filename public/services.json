@@ -1,6 +1,6 @@
 [
     {
-        "_id:":1,
+        "_id":1,
         "name": "Teeth Orthodontics",
         "slots":[
             "08:00am - 08:30",
@@ -12,7 +12,7 @@
         ]
     },
     {
-        "_id:":2,
+        "_id":2,
         "name": "Cosmetic Dentistry",
         "slots":[
             "08:30am - 09:00",
@@ -25,7 +25,7 @@
         ]
     },
     {
-        "_id:":3,
+        "_id":3,
         "name": "Teeth Cleaning",
         "slots":[
             "09:30am - 10:00am",
@@ -38,7 +38,7 @@
         ]
     },
     {
-        "_id:":4,
+        "_id":4,
         "name": "Cavity",
         "slots":[
             "10:00am - 10:30am",
@@ -50,7 +50,7 @@
         ]
     },
     {
-        "_id:":5,
+        "_id":5,
         "name": "Normal Treatment",
         "slots":[
             "11:00am - 11:30am",
@@ -62,7 +62,7 @@
         ]
     },
     {
-        "_id:":6,
+        "_id":6,
         "name": "Urgent Treatment",
         "slots":[
             
