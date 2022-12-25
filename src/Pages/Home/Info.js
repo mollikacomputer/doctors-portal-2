@@ -9,7 +9,6 @@ const Info = () => {
           <InfoCard image = {clock} bgClass = "bg-gradient-to-r from-primary to-secondary " title="Time slote" />  
           <InfoCard image = {location} bgClass = "bg-[#3A4256]" title="Tritment location" />  
           <InfoCard image = {marker}  bgClass = "bg-gradient-to-r from-primary to-secondary" title="title 3"/>  
- 
         </div>
     );
 };
