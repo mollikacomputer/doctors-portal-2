@@ -22,8 +22,7 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">What is your name?</span>
-                
+                <span class="label-text">What is your Email?</span>
               </label>
               <input
                 type="email"
@@ -37,7 +36,7 @@ const Login = () => {
                   },
                   pattern: {
                     value: /[A-Za-z]{3}/,
-                    message: 'Please provide a valid message' 
+                    message: 'Please provide a valid email' 
                   }
                 }
                 )}
@@ -48,7 +47,33 @@ const Login = () => {
               {errors.email?.type === "pattern" && (<p role="alert" className="text-red-500"> {errors.email?.message} </p>)} 
               </label>
             </div>
+            <div class="form-control w-full max-w-xs">
+              <label class="label">
+                <span class="label-text">Password?</span>
+              </label>
+              <input
+                type="password"
+                placeholder="Password"
+                class="input input-bordered w-full max-w-xs"
+                {...register("password", 
+                {
+                  required:{
+                    value:true,
+                    message:'password field is required'
+                  },
+                  minLength:{
+                    value: 6,
+                    message: 'Password at least 6 character length' 
+                  }
+                }
+                )}
 
+              />
+              <label class="label">
+              {errors.password?.type === "required" && (<p role="alert" className="text-red-500"> {errors.password?.message} </p>)}
+              {errors.password?.type === "minLength" && (<p role="alert" className="text-red-500"> {errors.password?.message} </p>)} 
+              </label>
+            </div>
            
 
             <input
