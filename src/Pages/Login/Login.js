@@ -11,7 +11,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   if (user) {
-    console.log(user);
+    console.log(user.user.displayName, user.user.email);
   }
   const onSubmit = (data) => console.log(data);
   return (
