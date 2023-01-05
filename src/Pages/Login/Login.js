@@ -100,14 +100,14 @@ if(error || gError){
               </label>
             </div>
             {signInError}
-            <input type="submit" className="btn w-full" />
+            <input type="submit" value="Login" className="btn w-full" />
           </form>
-
+          {signInError}
           <div className="divider"> Or </div>
           <button class="btn btn-outline" onClick={() => signInWithGoogle()}>
             Continue With Google
           </button>
-          Are you New User? <span className="text-primary" > <Link to="/register" > Register </Link>   </span>
+          New to Doctors Portal? <span className="text-primary" > <Link to="/register" > Register </Link>   </span>
         </div>
       </div>
     </div>
