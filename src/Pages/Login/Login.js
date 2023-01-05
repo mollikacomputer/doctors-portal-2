@@ -13,6 +13,7 @@ const Login = () => {
     error,
   ] = useSignInWithEmailAndPassword(auth);
 
+  let signInError;
 
   const {
     register,
@@ -20,15 +21,21 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
+
 if(loading || gLoading){
   return <GridLoader color="#36d7b7" />
 }
 
+if(user || gUser){
+  console.log(user, gUser);
+}
   if (gUser) {
     console.log(gUser.user.displayName, gUser.user.email);
-  }
+  };
 
-
+if(error || gError){
+  signInError = <p className="text-red-500"> { error?.message || gError?.message } </p>
+}
   const onSubmit = (data) => {
     console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
@@ -59,7 +66,6 @@ if(loading || gLoading){
                   }
                 }
                 )}
-
               />
               <label class="label">
               {errors.email?.type === "required" && (<p role="alert" className="text-red-500"> {errors.email?.message} </p>)}
@@ -86,20 +92,13 @@ if(loading || gLoading){
                   }
                 }
                 )}
-
               />
               <label class="label">
               {errors.password?.type === "required" && (<p role="alert" className="text-red-500"> {errors.password?.message} </p>)}
               {errors.password?.type === "minLength" && (<p role="alert" className="text-red-500"> {errors.password?.message} </p>)} 
               </label>
             </div>
-           
-
-            <input
-              
-            />
-            {errors.mail && <p role="alert">{errors.mail?.message}</p>}
-
+            {signInError}
             <input type="submit" className="btn w-full" />
           </form>
 
