@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-fireba
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import GridLoader from "react-spinners/GridLoader";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -106,6 +107,7 @@ if(error || gError){
           <button class="btn btn-outline" onClick={() => signInWithGoogle()}>
             Continue With Google
           </button>
+          Are you New User? <span className="text-primary" > <Link to="/register" > Register </Link>   </span>
         </div>
       </div>
     </div>
