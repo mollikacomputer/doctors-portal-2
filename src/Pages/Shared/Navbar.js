@@ -1,10 +1,25 @@
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { GridLoader } from "react-spinners";
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [signOut, signoutLoading, signoutError] = useSignOut(auth);
+  const navigate = useNavigate();
+  const signOutNotify = () => toast("Sign Out Successfully");
+  if (error || signoutError) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading || signoutLoading) {
+    return <GridLoader color="#36d7b7" />;
+  }
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -59,16 +74,30 @@ const Navbar = () => {
             <Link to={"/about"}> About </Link>
           </li>
           <li>
-            {user ? <Link to={"/login"}>Log Out</Link> :<Link to={"/login"}>Login</Link>}
-          </li>
-          <li>
             <Link to={"/register"}>Register</Link>
           </li>
           <li>
               <Link to={"/appointments"}>Appointment</Link>
             </li>
+            <li>
+            {user 
+            ?
+            <Link 
+            onClick={async () => {
+              const success = await signOut();
+              navigate('/');
+              
+              if (success) {
+              await signOutNotify;
+
+              }
+            }
+          }
+            >Log Out</Link> :<Link to={"/login"}>Login</Link>}
+          </li>
         </ul>
       </div>
+      <ToastContainer />
     </div>
   );
 };

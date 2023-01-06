@@ -3,9 +3,10 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-fireba
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import GridLoader from "react-spinners/GridLoader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [
     signInWithEmailAndPassword,
@@ -40,6 +41,7 @@ if(error || gError){
   const onSubmit = (data) => {
     console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
+    navigate('/')
   };
   return (
     <div className="flex h-screen justify-center items-center ">
