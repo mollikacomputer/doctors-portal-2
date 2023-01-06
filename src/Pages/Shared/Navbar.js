@@ -80,7 +80,8 @@ const Navbar = () => {
               <Link to={"/appointments"}>Appointment</Link>
             </li>
             <li>
-            {user 
+            {
+            user 
             ?
             <Link 
             onClick={async () => {
@@ -93,7 +94,9 @@ const Navbar = () => {
               }
             }
           }
-            >Log Out</Link> :<Link to={"/login"}>Login</Link>}
+            >Log Out</Link> 
+            :
+            <Link to={"/login"}>Login</Link>}
           </li>
         </ul>
       </div>
