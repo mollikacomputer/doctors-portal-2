@@ -1,13 +1,30 @@
 import React from "react";
 import { format } from "date-fns";
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { GridLoader } from "react-spinners";
 
 const BookingModal = ({ treatment, setTreatment, date }) => {
+  const [user, loading, error] = useAuthState(auth);
   const { _id, name, slots } = treatment;
+  const formattedDate = format(date, "PP")
   const handleBooking = event =>{
     event.preventDefault();
     const slot = event.target.slot.value;
     console.log( _id, name, slot)
+    const booking = {
+      treatmentId:_id,
+      treatment:name,
+      date:formattedDate,
+      slot,
+      patient:user.email,
+      patientName: user.displayName,
+      phone: event.target.phone.value
+    }
     setTreatment(null)
+  }
+  if(loading){
+    return <GridLoader color="#36d7b7" />
   }
   return (
     <>
@@ -42,13 +59,15 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
             <input
               type="text"
               name="name"
-              placeholder="your name"
+              disabled
+              value={user?.displayName ? user?.displayName : "Name is Not found"}
               className="input input-bordered w-full max-w-xs"
             />
             <input
               type="email"
               name="email"
-              placeholder="email address"
+              disabled
+              value={user?.email}
               className="input input-bordered w-full max-w-xs"
             />
             <input
