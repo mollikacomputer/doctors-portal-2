@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import auth from "../../firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GridLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 const BookingModal = ({ treatment, setTreatment, date }) => {
   const [user, loading, error] = useAuthState(auth);
@@ -21,7 +22,24 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
       patientName: user.displayName,
       phone: event.target.phone.value
     }
-    setTreatment(null)
+    fetch('http://localhost:4000/booking', {
+      method: 'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(booking)
+    })
+    .then(res=> res.json())
+    .then(data => {
+      console.log(data);
+      if(data.success){
+        toast(`Appoinment is set ${formattedDate} at ${slot}`)
+      }
+      else{
+        toast.error(`Already have an appointment ${data.booking?.date} at ${data.booking?.slot}`)
+      }
+      setTreatment(null);
+    })
   }
   if(loading){
     return <GridLoader color="#36d7b7" />
